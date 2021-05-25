@@ -1,6 +1,7 @@
 import os
 import re
 import streamlit as st
+import logging
 
 code = """<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async
@@ -20,3 +21,8 @@ with open(a,'r') as f:
 			newdata=re.sub('<head>','<head>' + code, data)
 			f.write(newdata)
 st.title("Hi everybody")
+title = st.text_input('Movie title','Life of Brian')
+st.write('The current movie title is',title)
+
+logging.warning('Watch out !')
+logging.info('I told you so')
