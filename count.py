@@ -1,11 +1,24 @@
-with open("shakespeare.txt", "r") as f:
-    lines = f.read().splitlines()  # toutes les lignes dans une liste
-    nb_lines = len(lines)
-    nb_chars = 0
-    nb_words = 0
-    for line in lines:
-        # traitement de la ligne
-        for char in line:
-            # traitement de chaque caractère
-            # utilisation de isalnum
-            nb_chars += 1
+# Open the file in read mode
+text = open("shakespeare.txt", "r")
+d = dict()
+for line in text:
+    line = line.strip()
+    line = line.lower()
+    words = line.split(" ")
+    for word in words:
+        if word in d:
+            d[word] = d[word] + 1
+        else:
+            d[word] = 1
+
+print(d)
+
+for line in text:
+    line = line.strip()
+    line = line.lower()
+    words = line.split(" ")
+    for word in words:
+        cnt = Counter()
+        cnt[word] += 1
+
+print(cnt)
